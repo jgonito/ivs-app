@@ -1,0 +1,147 @@
+.sliding-animation {
+    height: 35px;
+    width: 96%;
+    margin: 12px auto 3px;
+    padding: 10px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #8f8f8f;
+}
+
+.sliding-animation div {
+    position: absolute;
+    right: 100%;
+    width: 45px;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* .sliding-animation:hover div {
+    animation-play-state: paused;
+} */
+  
+.sliding-animation .img1{
+    animation: slide 25s linear infinite
+}
+  
+.sliding-animation .img2{
+    animation: slide 25s linear 6.25s infinite 
+}
+  
+.sliding-animation .img3{
+    animation: slide 25s linear 12.5s infinite
+}
+  
+.sliding-animation .img4{
+    animation: slide 25s linear 18.75s infinite
+}
+
+@keyframes slide {
+    0% { right: 100%; }
+    50% { right: -100%; }
+    100% {right: -100%}
+}
+
+@font-face {
+    font-family: 'google-stix-2';
+    src: url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=STIX+Two+Text&display=swap');
+}
+
+body {
+    font-size: 22px;
+    font-family: 'google-stix-2';
+    background: rgba(167, 255, 243, 0.2);
+}
+
+form {
+    max-width: 600px;
+    min-width: 250px;
+    margin: 30px auto;
+    padding: 15px;
+    background-color: rgba(31, 219, 210, 0.774);
+    border: 2px solid rgba(28, 175, 168, 0.774);
+    border-radius: 5px;
+}
+
+h2 {
+    text-decoration: underline;
+}
+
+.field-group {
+    width: 100%;
+    margin: 0 auto 8px;
+}
+
+.field-group label {
+    height: 26px;
+    font-weight: bold;
+    color: #303030;
+}
+
+.field-group .field-holder input {
+    display: block;
+    width: 99%;
+    height: 26px;
+    padding: 2px;
+    border: 1px solid rgba(28, 175, 168, 0.774);
+    border-radius: 2px;
+}
+
+.button-wrapper {
+    margin-top: 10px;
+}
+
+button {
+    display: block;
+    width: 100%;
+    margin-top: 5px;
+    padding: 12px 0;
+    font-size: 16px;
+    font-weight: bold;
+    border: 1px solid rgba(28, 175, 168, 0.774);
+    border-radius: 2px;
+    cursor: pointer;
+    color: #303030;
+}
+
+button:hover {
+    color: #000;
+    border: 1px solid rgba(27, 231, 221, 0.774);
+}
+
+@media only screen and (min-width: 600px) {
+    /* tablets */
+    form {
+        width: 80%;
+    }
+
+    .field-group {
+        display: table;
+    }
+
+    .field-wrapper {
+        display: table-row;
+    }
+
+    .field-group label {
+        display: table-cell;
+        width: 70px;
+    }
+
+    .field-group .field-holder {
+        display: table-cell;
+    }
+
+    .button-wrapper {
+        margin-top: 2px;
+    }
+
+    button {
+        padding: 6px 0;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    /* desktops */
+}

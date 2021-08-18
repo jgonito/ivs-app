@@ -1,0 +1,105 @@
+openapi: 3.0.0
+info:
+  title: IVS API
+  description: IVS API Documentation.
+  version: '1.00'
+
+servers:
+  - url: 'http://your-api-url'
+    description: The API URL
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+paths:
+  /:
+    get:
+      summary: Get list of member names.
+      description: Returns a list of names of registered member.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: A JSON array of member names
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  type: string
+                example:
+                  - "joe"
+                  - "jane"
+    post:
+      summary: Create new member.
+      description: Create a new member.
+      requestBody:
+        description: The member data
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+              example:
+                name: "jane"
+                email: "jane456@email.com"
+      responses:
+        '200':
+          description: A JSON object of member data
+          content:
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  name:
+                    type: string
+                  email:
+                    type: string
+                example:
+                  name: "jane"
+                  email: "jane456@email.com"
+  /{email}:
+    get:
+      summary: Get member data.
+      description: Returns the member data matching the given email.
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: email
+          required: true
+          schema:
+            type: string
+          description: The member email
+      responses:
+        '200':
+          description: A JSON object of member data
+          content:
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  name:
+                    type: string
+                  email:
+                    type: string
+                example:
+                  name: "joe"
+                  email: "joe123@email.com"
+        '404':
+          description: Member not exists
+          content:
+            text/html:
+              schema: 
+                type: string
+                example:
+                  invalid email
