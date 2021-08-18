@@ -8,9 +8,7 @@
         var name = form.querySelector('[name="name"]').value.trim();
         var email = form.querySelector('[name="email"]').value.trim();
         if ('fetch' in win) {
-            var apiUrl = location.protocol +
-                         location.hostname +
-                         ':3010/api'
+            var apiUrl = location.protocol + '//' + location.hostname + ':3010/api';
 
             fetch(apiUrl, {
                 method: 'POST',
